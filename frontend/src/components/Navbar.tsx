@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Wrapper,
@@ -7,6 +7,7 @@ import {
   Right,
   MenuItem,
   Link,
+  List
 } from "../styled/Navbar";
 import logo from "../static/logo.png";
 
@@ -20,10 +21,12 @@ const Navbar = () => {
           </Link>
         </Left>
         <Right>
-          <MenuItem>HOME</MenuItem>
-          <MenuItem>WILL</MenuItem>
-          <MenuItem>DAISY</MenuItem>
-          <MenuItem>JACK</MenuItem>
+          <List>
+            <MenuItem>HOME</MenuItem>
+            <MenuItem>WILL</MenuItem>
+            <MenuItem>DAISY</MenuItem>
+            <MenuItem>JACK</MenuItem>
+          </List>
         </Right>
       </Wrapper>
     </Container>

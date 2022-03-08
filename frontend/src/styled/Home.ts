@@ -41,7 +41,7 @@ export const TextContainer = styled.div`
     font-weight: 600;
   }
 
-  @media (max-width: 420px) {
+  @media (max-width: 380px) {
     font-size: 20px;
   }
 `;
@@ -126,7 +126,7 @@ export const Image = styled.img`
     width: 260px;
   }
 
-  @media (max-width: 420px) {
+  @media (max-width: 380px) {
     width: 210px;
   }
 

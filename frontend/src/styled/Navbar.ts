@@ -27,15 +27,24 @@ export const Left = styled.div`
   flex: 1;
   margin-right: 20px;
   align-items: center;
+
+  @media (max-width: 768px) {
+    margin-right: 5px;
+  }
 `;
 
 export const Logo = styled.img`
   height: auto;
   width: auto;
   max-width: 110px;
+  padding-left: 10px;
 
-  @media (max-width:768px) {
-    max-width: 100px;
+  @media (max-width: 768px) {
+    max-width: 90px;
+  }
+
+  @media (max-width: 280px) {
+    max-width: 60px;
   }
 `;
 
@@ -48,10 +57,29 @@ export const Right = styled.div`
   display: flex;
   text-align: center;
   justify-content: end;
+
+  @media (max-width: 768px) {
+    flex:2;
+  }
 `;
+
+export const List = styled.ul``;
 
 export const MenuItem = styled.a`
   margin: 0px 10px;
   cursor: pointer;
   font-size: 16px;
+
+  @media (max-width: 768px) {
+    margin: 0px 5px;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 280px) {
+    font-size: 12px;
+    margin: 0px 2px;
+  }
 `;
