@@ -1,3 +1,4 @@
+import { ArrowForwardOutlined } from "@mui/icons-material";
 import React from "react";
 import {
   Container,
@@ -37,9 +38,9 @@ const Home = () => {
             <Image src="https://assets.website-files.com/5d80c03f1edd7bd68fcdb623/61deb51d9292f42bf6698bf0_Partnership_v2%201.svg" />
           </ImgWrapper>
           <BtnWrapper>
-            <Button>WILL</Button>
-            <Button>DAISY</Button>
-            <Button>JACK</Button>
+            <Button>WILL <ArrowForwardOutlined fontSize="medium"/></Button>
+            <Button>DAISY <ArrowForwardOutlined fontSize="medium"/></Button>
+            <Button>JACK <ArrowForwardOutlined fontSize="medium"/></Button>
           </BtnWrapper>
         </ContentWrapper>
       </Content>

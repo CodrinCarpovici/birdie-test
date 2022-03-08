@@ -27,6 +27,14 @@ Regular:
 - Size: 18px
 - Weight: 500
 
+Mobile:
+- Size: 20px;
+- Weight: 600;
+
+Tablet:
+- Size: 24px;
+- Weight: 600;
+
 Header:
 - Size: 40px
 - Weight: 700

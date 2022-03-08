@@ -20,6 +20,10 @@ export const InfoContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   background: #00254d;
+  left: 0;
+  top: 0;
+  right: auto;
+  bottom: auto;
 `;
 
 export const TextContainer = styled.div`
@@ -31,6 +35,15 @@ export const TextContainer = styled.div`
   font-size: 40px;
   font-weight: 700;
   color: white;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 20px;
+  }
 `;
 
 export const ImgContainer = styled.div`
@@ -67,6 +80,16 @@ export const Title = styled.h1`
   color: white;
   border-radius: 7px;
   padding: 5px 10px;
+
+  @media (max-width: 768px) {
+    font-size: 40px;
+    top: -55px;
+  }
+
+  @media (max-width: 280px) {
+    font-size: 24px;
+    top: -38px;
+  }
 `;
 
 export const Content = styled.div`
@@ -86,7 +109,7 @@ export const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #E2F5F5;
+  background: #e2f5f5;
   border-radius: 7px;
 `;
 
@@ -99,6 +122,17 @@ export const ImgWrapper = styled.div`
 
 export const Image = styled.img`
   width: 320px;
+  @media (max-width: 768px) {
+    width: 260px;
+  }
+
+  @media (max-width: 420px) {
+    width: 210px;
+  }
+
+  @media (max-width: 280px) {
+    width: 140px;
+  }
 `;
 
 export const BtnWrapper = styled.div`
@@ -111,6 +145,9 @@ export const BtnWrapper = styled.div`
 
 export const Button = styled.button`
   background: #f1a92b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
   font-size: 40px;
   font-weight: 700;
@@ -122,5 +159,12 @@ export const Button = styled.button`
 
   &:hover {
     transform: scale(1.1);
+  }
+  @media (max-width: 768px) {
+    font-size: 30px;
+  }
+
+  @media (max-width: 280px) {
+    font-size: 24px;
   }
 `;

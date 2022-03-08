@@ -33,6 +33,10 @@ export const Logo = styled.img`
   height: auto;
   width: auto;
   max-width: 110px;
+
+  @media (max-width:768px) {
+    max-width: 100px;
+  }
 `;
 
 export const Link = styled.a`
