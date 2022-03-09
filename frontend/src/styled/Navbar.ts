@@ -59,27 +59,45 @@ export const Right = styled.div`
   justify-content: end;
 
   @media (max-width: 768px) {
-    flex:2;
+    flex: 2;
   }
 `;
 
-export const List = styled.ul``;
+export const List = styled.ul`
+  display: flex;
 
-export const MenuItem = styled.a`
-  margin: 0px 10px;
-  cursor: pointer;
-  font-size: 16px;
-
-  @media (max-width: 768px) {
-    margin: 0px 5px;
+  a {
+    text-decoration: none;
   }
 
-  @media (max-width: 360px) {
-    font-size: 14px;
-  }
+  li {
+    color: black;
+    margin: 0px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    list-style: none;
 
-  @media (max-width: 280px) {
-    font-size: 12px;
-    margin: 0px 2px;
+    border-bottom: 0.1875rem solid transparent;
+    transition: all 0.5s ease;
+
+    &.active,
+    :focus,
+    :hover {
+      border-bottom: 3px solid #f1a92b;
+    }
+
+    @media (max-width: 768px) {
+      margin: 0px 5px;
+    }
+
+    @media (max-width: 360px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 280px) {
+      font-size: 12px;
+      margin: 0px 2px;
+    }
   }
 `;

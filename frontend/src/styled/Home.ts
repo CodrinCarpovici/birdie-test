@@ -139,32 +139,39 @@ export const BtnWrapper = styled.div`
   display: flex;
   flex: 1;
   align-items: center;
-  justify-content: end;
-  flex-direction: column;
-`;
-
-export const Button = styled.button`
-  background: #f1a92b;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 40px;
-  font-weight: 700;
-  border-radius: 7px;
-  border: none;
-  margin: 20px 0px;
-  transition: all 0.5s ease;
-  cursor: pointer;
+  flex-direction: column;
 
-  &:hover {
-    transform: scale(1.1);
-  }
-  @media (max-width: 768px) {
-    font-size: 30px;
+  a {
+    text-decoration: none;
   }
 
-  @media (max-width: 280px) {
-    font-size: 24px;
+  li {
+    list-style: none;
+    background: #f1a92b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+    border-radius: 7px;
+    border: none;
+    margin: 20px 0px;
+    text-transform: uppercase;
+    padding: 0px 10px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+    @media (max-width: 768px) {
+      font-size: 30px;
+    }
+
+    @media (max-width: 280px) {
+      font-size: 24px;
+    }
   }
 `;
