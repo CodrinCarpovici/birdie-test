@@ -25,8 +25,6 @@ function App() {
         <Route path="/daisy" element={<CareRecipient2 />} />
         <Route path="/jack" element={<CareRecipient3 />} />
       </Routes>
-
-      <BarChart />
     </>
   );
 }
