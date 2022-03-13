@@ -8,7 +8,7 @@ ChartJS.register(...registerables);
 ChartJS.register(BarElement);
 
 const BarChart = () => {
-  var data = {
+  const data = {
     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
     datasets: [
       {
@@ -35,7 +35,7 @@ const BarChart = () => {
     ],
   };
 
-  var options = {
+  const options = {
     maintainAspectRatio: false,
     scales: {
       y: {

@@ -1,44 +1,32 @@
 import * as express from "express";
-import {pingController} from "./controllers/ping";
-const mysql = require("mysql");
+import { carerecipientController } from "./controllers/carerecipientController";
+import { eventsController } from "./controllers/eventsController";
+import { eventtypeController } from "./controllers/eventtypeController";
+import { pingController } from "./controllers/ping";
+
+import { db } from './dbenv'
 
 const app = express();
 
-//DB Connection
+app.use(function (_req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
-const db = mysql.createConnection({
-    host: "birdie-test.cyosireearno.eu-west-2.rds.amazonaws.com",
-    user: "test-read",
-    password: "xnxPp6QfZbCYkY8",
-    database: "birdietest",
-  });
-  
-  
-  //Care Recipient
-  
-  let recipientID;
-  
-  const setRecipientID = (results: any) => {
-    recipientID = results;
-  }
-  
-  app.use(function(_req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-  });
+//Care Recipient
 
-  app.get('/careRecipient', (_req, res) => {
-    let sql =  `SELECT DISTINCT care_recipient_id from events`
-    let query = db.query(sql, (err: any, results: any) => {
-      if(err) {
-        throw err
-      }
-      console.log(results);
-      setRecipientID(results);
-      res.send(results)
-    })
-  })
+app.use(carerecipientController);
+
+//Events
+
+app.use(eventsController);
+
+//Event Data
+
 
 app.use(pingController);
 
