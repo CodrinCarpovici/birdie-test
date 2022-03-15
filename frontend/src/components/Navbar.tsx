@@ -10,6 +10,7 @@ import {
 import logo from "../static/logo.png";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Dropdown from "./Dropdown";
 import api from "../pages/api/posts";
 
 
@@ -24,10 +25,11 @@ const Navbar = () => {
           const response = await api.get("/careRecipient");
   
           setRecipient(response.data);
+          
           console.log(recipient);
         } catch (err) {
           // Not in the 200 response range
-          let errorMessage = "Failed to retrieve Recipients!";
+          let errorMessage = "Failed!";
           if (err instanceof Error) {
             errorMessage = err.message;
           }
@@ -38,18 +40,7 @@ const Navbar = () => {
       fetchRecipient();  
     }, []);
   
-    const links = recipient?.map((data, index) => {
-      const container = {};
-  
-      //@ts-ignore
-      container.name = `Person${index + 1}`;
-      //@ts-ignore
-      container.path = `/recipient${index + 1}`;
-  
-      return container;
-    });
-  
-    console.log(links);
+    
 
   return (
     <Container>
@@ -63,14 +54,14 @@ const Navbar = () => {
         </Left>
         <Right>
           <List>
-            <NavLink key="Home" to="/" className="current">
-            <li>Home</li>
+          <NavLink key="Home" to="/" className="current">
+              <li>Home</li>
             </NavLink>
-            {links.map((link, index) => (
+            {recipient.map((link, index) => (
               //@ts-ignore
-              <NavLink key={index} to={link.path} className="current">
+              <NavLink key={index} to={`/person/${link.care_recipient_id}`} className="current">
                 {/*@ts-ignore*/}
-                <li>{link.name}</li>
+                <li >Person{index + 1}</li>
               </NavLink>
             ))}
           </List>

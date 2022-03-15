@@ -39,27 +39,6 @@ const Home = () => {
     fetchRecipient();  
   }, []);
 
-  const links = recipient?.map((data, index) => {
-    const container = {};
-
-    //@ts-ignore
-    container.name = `Person${index + 1}`;
-    //@ts-ignore
-    container.path = `/recipient${index + 1}`;
-
-    return container;
-  });
-
-  console.log(links);
-
-  /*EXPECTED OUTPUT 
-  [
-    { name: "Recipient 1", path: "/recipient1" },
-    { name: "Recipient 2", path: "/recipient2" },
-    { name: "Recipient 3", path: "/recipient3" },
-  ];
-  */
-
   return (
     <div>
       <Container>
@@ -82,16 +61,16 @@ const Home = () => {
             <Image src="https://assets.website-files.com/5d80c03f1edd7bd68fcdb623/61deb51d9292f42bf6698bf0_Partnership_v2%201.svg" />
           </ImgWrapper>
           <BtnWrapper>
-            {links?.map((link, index) => (
+            {recipient?.map((link, index) => (
               <NavLink
                 key={index}
                 //@ts-ignore
-                to={link.path}
+                to={`/person/${link.care_recipient_id}`}
                 className="current"
               >
                 <li>
                 {/*@ts-ignore*/}
-                  {link.name}
+                  PERSON{index + 1}
                   <ArrowForwardOutlined fontSize="medium" />
                 </li>
               </NavLink>

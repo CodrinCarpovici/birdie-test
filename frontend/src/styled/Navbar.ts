@@ -12,6 +12,7 @@ export const Container = styled.div`
   justify-content: center;
   position: fixed;
   overflow: hidden;
+  z-index: 100;
 `;
 export const Wrapper = styled.div`
   padding: 10px 30px;

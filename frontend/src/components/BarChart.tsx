@@ -9,19 +9,19 @@ import {
 import { Bar } from "react-chartjs-2";
 import { useEffect, useState } from "react";
 import api from "../pages/api/posts";
+import { useParams } from "react-router-dom";
 
-ChartJS.register(...registerables);
-
-ChartJS.register(BarElement, LinearScale, CategoryScale);
+ChartJS.register(...registerables, BarElement, LinearScale, CategoryScale);
 
 const BarChart = () => {
+  const { id } = useParams();
   const [chart, setChart] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await api.get(
-          "/careRecipient/ad3512a6-91b1-4d7d-a005-6f8764dd0111/events/fluid_intake_observation"
+          `/careRecipient/${id}/events/fluid_intake_observation`
         );
 
         setChart(response.data);
@@ -44,7 +44,7 @@ const BarChart = () => {
     labels: chart?.map((data) => data.timestamp),
     datasets: [
       {
-        label: `${chart?.length} Fluid Intake Observations`,
+        label: `${chart.length} Fluid Intake Observations`,
         data: chart?.map((data) => JSON.parse(data.payload).consumed_volume_ml),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
@@ -76,7 +76,7 @@ const BarChart = () => {
     },
     legend: {
       labels: {
-        fontSize: 26,
+        fontSize: 22,
       },
     },
   };
