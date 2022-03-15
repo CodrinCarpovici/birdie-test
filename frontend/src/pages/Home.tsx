@@ -1,5 +1,5 @@
 import { ArrowForwardOutlined } from "@mui/icons-material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   Container,
@@ -14,14 +14,52 @@ import {
   Image,
   ImgWrapper,
 } from "../styled/Home";
-
-const links = [
-  { name: "Will", path: "/will" },
-  { name: "Daisy", path: "/daisy" },
-  { name: "Jack", path: "/jack" },
-];
+import api from "./api/posts";
 
 const Home = () => {
+  const [recipient, setRecipient] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchRecipient = async () => {
+      try {
+        const response = await api.get("/careRecipient");
+
+        setRecipient(response.data);
+        console.log(recipient);
+      } catch (err) {
+        // Not in the 200 response range
+        let errorMessage = "Failed!";
+        if (err instanceof Error) {
+          errorMessage = err.message;
+        }
+        console.log(errorMessage);
+      }
+    };
+
+    fetchRecipient();  
+  }, []);
+
+  const links = recipient?.map((data, index) => {
+    const container = {};
+
+    //@ts-ignore
+    container.name = `Person${index + 1}`;
+    //@ts-ignore
+    container.path = `/recipient${index + 1}`;
+
+    return container;
+  });
+
+  console.log(links);
+
+  /*EXPECTED OUTPUT 
+  [
+    { name: "Recipient 1", path: "/recipient1" },
+    { name: "Recipient 2", path: "/recipient2" },
+    { name: "Recipient 3", path: "/recipient3" },
+  ];
+  */
+
   return (
     <div>
       <Container>
@@ -44,13 +82,18 @@ const Home = () => {
             <Image src="https://assets.website-files.com/5d80c03f1edd7bd68fcdb623/61deb51d9292f42bf6698bf0_Partnership_v2%201.svg" />
           </ImgWrapper>
           <BtnWrapper>
-          {links.map((link, index) => (
+            {links?.map((link, index) => (
               <NavLink
                 key={index}
+                //@ts-ignore
                 to={link.path}
                 className="current"
               >
-                <li>{link.name}<ArrowForwardOutlined fontSize="medium"/></li>
+                <li>
+                {/*@ts-ignore*/}
+                  {link.name}
+                  <ArrowForwardOutlined fontSize="medium" />
+                </li>
               </NavLink>
             ))}
           </BtnWrapper>

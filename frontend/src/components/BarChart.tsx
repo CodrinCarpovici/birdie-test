@@ -1,19 +1,51 @@
-import React from "react";
-import { Container } from "../styled/BarChart";
-import { Chart as ChartJS, BarElement, registerables } from "chart.js";
+import { ChartContainer, Container } from "../styled/BarChart";
+import {
+  Chart as ChartJS,
+  BarElement,
+  registerables,
+  LinearScale,
+  CategoryScale,
+} from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { useEffect, useState } from "react";
+import api from "../pages/api/posts";
 
 ChartJS.register(...registerables);
 
-ChartJS.register(BarElement);
+ChartJS.register(BarElement, LinearScale, CategoryScale);
 
 const BarChart = () => {
+  const [chart, setChart] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get(
+          "/careRecipient/ad3512a6-91b1-4d7d-a005-6f8764dd0111/events/fluid_intake_observation"
+        );
+
+        setChart(response.data);
+        /*setLoad(JSON.parse(response.data.payload).data);*/ //FIXX
+        console.log(response.data);
+      } catch (err) {
+        // Not in the 200 response range
+        let errorMessage = "Failed!";
+        if (err instanceof Error) {
+          errorMessage = err.message;
+        }
+        console.log(errorMessage);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const data = {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    labels: chart?.map((data) => data.timestamp),
     datasets: [
       {
-        label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
+        label: `${chart?.length} Fluid Intake Observations`,
+        data: chart?.map((data) => JSON.parse(data.payload).consumed_volume_ml),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -51,7 +83,9 @@ const BarChart = () => {
 
   return (
     <Container>
-      <Bar data={data} options={options} height={400} />
+      <ChartContainer>
+        <Bar data={data} options={options} height={400} />
+      </ChartContainer>
     </Container>
   );
 };

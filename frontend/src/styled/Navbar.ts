@@ -43,6 +43,10 @@ export const Logo = styled.img`
     max-width: 90px;
   }
 
+  @media (max-width: 390px) {
+    max-width: 60px;
+  }
+
   @media (max-width: 280px) {
     max-width: 60px;
   }
@@ -91,8 +95,8 @@ export const List = styled.ul`
       margin: 0px 5px;
     }
 
-    @media (max-width: 360px) {
-      font-size: 14px;
+    @media (max-width: 390px) {
+      font-size: 12px;
     }
 
     @media (max-width: 280px) {

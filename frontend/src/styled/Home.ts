@@ -126,7 +126,7 @@ export const Image = styled.img`
     width: 260px;
   }
 
-  @media (max-width: 380px) {
+  @media (max-width: 390px) {
     width: 210px;
   }
 
@@ -170,8 +170,12 @@ export const BtnWrapper = styled.div`
       font-size: 30px;
     }
 
+    @media (max-width: 390px) {
+      font-size: 22px;
+    }
+
     @media (max-width: 280px) {
-      font-size: 24px;
+      font-size: 18px;
     }
   }
 `;

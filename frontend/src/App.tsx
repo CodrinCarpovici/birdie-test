@@ -19,11 +19,11 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route index element={<Home />} />
 
-        <Route path="/will" element={<CareRecipient />} />
-        <Route path="/daisy" element={<CareRecipient2 />} />
-        <Route path="/jack" element={<CareRecipient3 />} />
+        <Route path="/recipient1" element={<CareRecipient />} />
+        <Route path="/recipient2" element={<CareRecipient2 />} />
+        <Route path="/recipient3" element={<CareRecipient3 />} />
       </Routes>
     </>
   );

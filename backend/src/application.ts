@@ -1,12 +1,11 @@
 import * as express from "express";
 import { carerecipientController } from "./controllers/carerecipientController";
 import { eventsController } from "./controllers/eventsController";
-import { eventtypeController } from "./controllers/eventtypeController";
 import { pingController } from "./controllers/ping";
 
-import { db } from './dbenv'
-
 const app = express();
+
+app.use(express.json());
 
 app.use(function (_req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -25,9 +24,10 @@ app.use(carerecipientController);
 
 app.use(eventsController);
 
-//Event Data
-
+//Ping
 
 app.use(pingController);
+
+
 
 export default app;
