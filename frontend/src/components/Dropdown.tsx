@@ -1,15 +1,15 @@
 //@ts-nocheck
+import { Container } from "../styled/Dropdown";
 
-const Dropdown = ({ label, value, options, onChange }) => {
+const Dropdown = ({ value, options, onChange }) => {
   return (
-    <label>
-      {label}
-      <select value={value} onChange={onChange}>
-        {options.map((option) => (
-          <option value={option.value}>{option.label}</option>
-        ))}
-      </select>
-    </label>
+    <Container>
+        <select value={value} onChange={onChange}>
+          {options.map((option, index) => (
+            <option key={index}>{option.event_type}</option>
+          ))}
+        </select>
+    </Container>
   );
 };
 

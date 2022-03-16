@@ -18,6 +18,7 @@ function App() {
         <Route index element={<Home />} />
 
         <Route path="/person/:id" element={<CareRecipient />} />
+        <Route path="/person/:id/events/:eventid" element={<CareRecipient />} />
       </Routes>
     </>
   );

@@ -61,7 +61,7 @@ const Navbar = () => {
               //@ts-ignore
               <NavLink key={index} to={`/person/${link.care_recipient_id}`} className="current">
                 {/*@ts-ignore*/}
-                <li >Person{index + 1}</li>
+                <li>Person{index + 1}</li>
               </NavLink>
             ))}
           </List>
