@@ -15,6 +15,7 @@ ChartJS.register(...registerables, BarElement, LinearScale, CategoryScale);
 
 const BarChart = () => {
   const { id } = useParams();
+  //const { eventid } = useParams();
   const [chart, setChart] = useState<any[]>([]);
 
   useEffect(() => {
@@ -25,7 +26,6 @@ const BarChart = () => {
         );
 
         setChart(response.data);
-        /*setLoad(JSON.parse(response.data.payload).data);*/ //FIXX
         console.log(response.data);
       } catch (err) {
         // Not in the 200 response range
@@ -38,10 +38,17 @@ const BarChart = () => {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
+
+  //@ts-ignore
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    //@ts-ignore
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
 
   const data = {
-    labels: chart?.map((data) => data.timestamp),
+    labels: chart?.map((data) => formatDate(data.timestamp)),
     datasets: [
       {
         label: `${chart.length} Fluid Intake Observations`,

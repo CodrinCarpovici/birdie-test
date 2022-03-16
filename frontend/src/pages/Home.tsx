@@ -36,7 +36,7 @@ const Home = () => {
       }
     };
 
-    fetchRecipient();  
+    fetchRecipient();
   }, []);
 
   return (
@@ -69,7 +69,7 @@ const Home = () => {
                 className="current"
               >
                 <li>
-                {/*@ts-ignore*/}
+                  {/*@ts-ignore*/}
                   PERSON{index + 1}
                   <ArrowForwardOutlined fontSize="medium" />
                 </li>

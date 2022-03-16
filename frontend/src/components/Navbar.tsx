@@ -13,34 +13,29 @@ import { useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
 import api from "../pages/api/posts";
 
-
-
 const Navbar = () => {
-  
   const [recipient, setRecipient] = useState<any[]>([]);
-  
-    useEffect(() => {
-      const fetchRecipient = async () => {
-        try {
-          const response = await api.get("/careRecipient");
-  
-          setRecipient(response.data);
-          
-          console.log(recipient);
-        } catch (err) {
-          // Not in the 200 response range
-          let errorMessage = "Failed!";
-          if (err instanceof Error) {
-            errorMessage = err.message;
-          }
-          console.log(errorMessage);
+
+  useEffect(() => {
+    const fetchRecipient = async () => {
+      try {
+        const response = await api.get("/careRecipient");
+
+        setRecipient(response.data);
+
+        console.log(recipient);
+      } catch (err) {
+        // Not in the 200 response range
+        let errorMessage = "Failed!";
+        if (err instanceof Error) {
+          errorMessage = err.message;
         }
-      };
-  
-      fetchRecipient();  
-    }, []);
-  
-    
+        console.log(errorMessage);
+      }
+    };
+
+    fetchRecipient();
+  }, []);
 
   return (
     <Container>
@@ -54,12 +49,16 @@ const Navbar = () => {
         </Left>
         <Right>
           <List>
-          <NavLink key="Home" to="/" className="current">
+            <NavLink key="Home" to="/" className="current">
               <li>Home</li>
             </NavLink>
             {recipient.map((link, index) => (
               //@ts-ignore
-              <NavLink key={index} to={`/person/${link.care_recipient_id}`} className="current">
+              <NavLink
+                key={index}
+                to={`/person/${link.care_recipient_id}`}
+                className="current"
+              >
                 {/*@ts-ignore*/}
                 <li>Person{index + 1}</li>
               </NavLink>

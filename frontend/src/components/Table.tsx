@@ -11,7 +11,8 @@ import api from "../pages/api/posts";
 import { useParams } from "react-router-dom";
 
 const Table = () => {
-  const {id} = useParams();
+  const { id } = useParams();
+  const { eventid } = useParams();
   const [tabledata, setTabledata] = useState<any[]>([]);
 
   useEffect(() => {
@@ -23,6 +24,7 @@ const Table = () => {
 
         setTabledata(response.data);
         /*setLoad(JSON.parse(response.data.payload).data);*/ //FIXX
+
         console.log(response.data);
       } catch (err) {
         // Not in the 200 response range
@@ -35,7 +37,7 @@ const Table = () => {
     };
 
     fetchData();
-  }, []);
+  }, [id, eventid]);
 
   return (
     <Container>
@@ -44,19 +46,28 @@ const Table = () => {
           <thead>
             <TR>
               <TH>Time</TH>
-              <TH>Task Notes</TH>
+              <TH>Tasks Completed Notes</TH>
             </TR>
           </thead>
-          {tabledata.map((val, index) => {
-            return (
-              <tbody>
+          <tbody>
+            {tabledata.map((val, index) => {
+              //@ts-ignore
+              const formatDate = (dateString) => {
+                let date = new Date(dateString);
+                //@ts-ignore
+                return new Intl.DateTimeFormat("en-GB", {
+                  dateStyle: "medium",
+                  timeStyle: "medium",
+                }).format(date);
+              };
+              return (
                 <TR key={index}>
-                  <TD>{val.timestamp}</TD>
+                  <TD>{formatDate(val.timestamp)}</TD>
                   <TD>{JSON.parse(val.payload).task_definition_description}</TD>
                 </TR>
-              </tbody>
-            );
-          })}
+              );
+            })}
+          </tbody>
         </StyledTable>
       </TableContainer>
     </Container>
