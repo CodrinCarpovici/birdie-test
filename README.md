@@ -25,11 +25,6 @@ I've made a scalable and responsive app with room for improvement in the scalabi
 - [MySQL](https://www.mysql.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 
-## Improvements I could do for the App
-
-- With more knowledge and time in `react-router -dom v6` I would've liked to implement another set of dynamically generated routes nested further in one of the components to allow for the `Table` and the `BarChart` components to be rendered based on `event_type` also and not only based of the `care_recipient_id` API response
-- With that done I could've also ensured that the data gets rendered in a specific format based on what type of event the frontend receives(i.e. Line Chart, Pie Chart etc.)
-
 ## Things I've Learned
 
 ### Front end
@@ -44,3 +39,9 @@ I've made a scalable and responsive app with room for improvement in the scalabi
 - How to make queries to the database
 - Using conditions in SQL
 - Creating a connection to a database
+
+## Improvements I could do for the App
+
+- With more knowledge and time in `React Router v6` I would've liked to implement another set of dynamically generated routes nested further in one of the components to allow for the `Table` and the `BarChart` components to be rendered based on `event_type` also and not only based of the `care_recipient_id` API response
+- With that done I could've also ensured that the data gets rendered in a specific format based on what type of event the frontend receives(i.e. Line Chart, Pie Chart etc.)
+
