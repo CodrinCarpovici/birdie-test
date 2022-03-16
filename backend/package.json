@@ -9,7 +9,8 @@
   "main": "lib/index",
   "types": "lib/index",
   "scripts": {
-    "start": "nodemon",
+    "start": "node index.ts",
+    "heroku-postbuild": "cd .. && cd frontend && npm install && npm run build",
     "clean": "rimraf lib && rimraf coverage",
     "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
