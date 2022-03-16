@@ -12,6 +12,7 @@ export const Container = styled.div`
   justify-content: center;
   position: fixed;
   overflow: hidden;
+  z-index: 100;
 `;
 export const Wrapper = styled.div`
   padding: 10px 30px;
@@ -41,6 +42,10 @@ export const Logo = styled.img`
 
   @media (max-width: 768px) {
     max-width: 90px;
+  }
+
+  @media (max-width: 390px) {
+    max-width: 60px;
   }
 
   @media (max-width: 280px) {
@@ -91,8 +96,8 @@ export const List = styled.ul`
       margin: 0px 5px;
     }
 
-    @media (max-width: 360px) {
-      font-size: 14px;
+    @media (max-width: 390px) {
+      font-size: 12px;
     }
 
     @media (max-width: 280px) {
